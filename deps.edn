@@ -1,4 +1,4 @@
-{:paths ["src" "test" "target/classes" "target/production/clojure-training"]
+{:paths ["src" "test" "target/classes"]
  :deps  {org.clojure/clojure              {:mvn/version "1.11.3"}
          com.fulcrologic/fulcro           {:mvn/version "3.6.3"}
          fulcrologic/fulcro-spec          {:mvn/version "3.1.12"}

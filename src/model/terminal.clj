@@ -25,3 +25,6 @@
 
 (defn get-terminal-height [^Terminal t]
   (.getRows (.getTerminalSize t)))
+
+(defn get-terminal-width [^Terminal t]
+  (.getColumns (.getTerminalSize t)))

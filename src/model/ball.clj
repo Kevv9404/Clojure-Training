@@ -10,7 +10,7 @@
 
 (defn change-sign [n] (- n))
 
-(defn bounce [{:ball/keys [velocity] :as ball} target-axis]
+(defn bounce [state target-axis]
   (if (= target-axis :x)
-    (update-in ball [:ball/velocity 0] change-sign)
-    (update-in ball [:ball/velocity 1] change-sign)))
+    (update-in state [:ball/velocity 0] change-sign)
+    (update-in state [:ball/velocity 1] change-sign)))

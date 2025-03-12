@@ -34,7 +34,6 @@
   (loop [y (get-top-y paddle)]
     (when (<= y (get-bottom-y paddle))
       (terminal/put-character terminal (x-position paddle) y \|)
-      (terminal/flush! terminal)
       (recur (inc y)))))
 
 

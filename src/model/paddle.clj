@@ -11,22 +11,14 @@
 
 (defn x-position [{:paddle/keys [position]}] (first position))
 
-(defn ball-colliding-paddle? [{:paddle/keys [position] :as paddle} ball]
+(defn ball-colliding-paddle? [paddle ball]
   (let [ball-position (:ball/position ball)
         [b-x b-y] ball-position]
-    (if (and (left-paddle? paddle)
-          (<= b-x (x-position paddle))
-          (>= b-y (get-top-y paddle))
-          (<= b-y (get-bottom-y paddle))
-          (< (first (:ball/velocity ball)) 0))
-      true)
-    (if (and (not (left-paddle? paddle))
-          (>= b-x (x-position paddle))
-          (>= b-y (get-top-y paddle))
-          (<= b-y (get-bottom-y paddle))
-          (> (first (:ball/velocity ball)) 0))
-      true)
-    false))
+    (cond (and (left-paddle? paddle) (<= b-x (x-position paddle)) (>= b-y (get-top-y paddle)) (<= b-y (get-bottom-y paddle)) (< (first (:ball/velocity ball)) 0))
+          true
+          (and (not (left-paddle? paddle)) (>= b-x (x-position paddle)) (>= b-y (get-top-y paddle)) (<= b-y (get-bottom-y paddle)) (> (first (:ball/velocity ball)) 0))
+          true
+          :else false)))
 
 (defn move-up [{:paddle/keys [height] :as paddle}]
   (if (> (y-position paddle) (/ height 2))
@@ -38,10 +30,11 @@
     (update-in paddle [:paddle/position 1] inc)
     paddle))
 
-(defn draw! [paddle terminal]
+(defn draw-paddle! [paddle terminal]
   (loop [y (get-top-y paddle)]
     (when (<= y (get-bottom-y paddle))
       (terminal/put-character terminal (x-position paddle) y \|)
+      (terminal/flush! terminal)
       (recur (inc y)))))
 
 

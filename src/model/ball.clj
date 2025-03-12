@@ -14,5 +14,3 @@
   (if (= target-axis :x)
     (update-in ball [:ball/velocity 0] change-sign)
     (update-in ball [:ball/velocity 1] change-sign)))
-
-(keys {:a 1})

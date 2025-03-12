@@ -22,3 +22,6 @@
 
 (defn flush! [^Terminal t]
   (.flush t))
+
+(defn get-terminal-height [^Terminal t]
+  (.getRows (.getTerminalSize t)))

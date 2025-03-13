@@ -1,4 +1,4 @@
-(ns model.terminal
+(ns terminal
   (:import (java.nio.charset StandardCharsets)
            (com.googlecode.lanterna.terminal DefaultTerminalFactory Terminal)))
 
@@ -28,3 +28,6 @@
 
 (defn get-terminal-width [^Terminal t]
   (.getColumns (.getTerminalSize t)))
+
+(defn close-terminal [^Terminal t]
+  (.close t))

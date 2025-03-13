@@ -1,4 +1,4 @@
-(ns model.utils)
+(ns utils)
 
 (defn addition-of-vectors
   "Returns a new vector with the sum of  x's and y's of two vectors as arguments"

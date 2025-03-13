@@ -1,5 +1,5 @@
 (ns model.utils-test
-  (:require [model.utils :as utils]
+  (:require [utils :as utils]
             [fulcro-spec.core :refer [=> assertions specification]]))
 
 (specification "addition-of-vectors" :focus
